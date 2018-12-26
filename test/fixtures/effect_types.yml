@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  effect_base: 1
+  art_effect: 1
+  art_attachment_point: 1
+  duration: 1
+
+two:
+  name: MyString
+  effect_base: 1
+  art_effect: 1
+  art_attachment_point: 1
+  duration: 1

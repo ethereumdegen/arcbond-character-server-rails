@@ -1,0 +1,2 @@
+class SpellType < ApplicationRecord
+end

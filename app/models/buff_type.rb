@@ -1,0 +1,2 @@
+class BuffType < ApplicationRecord
+end

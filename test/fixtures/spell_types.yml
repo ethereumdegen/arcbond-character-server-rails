@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  cast_style: 1
+  icon: MyString
+  cooldown: 1
+  manacost: 1
+
+two:
+  name: MyString
+  cast_style: 1
+  icon: MyString
+  cooldown: 1
+  manacost: 1

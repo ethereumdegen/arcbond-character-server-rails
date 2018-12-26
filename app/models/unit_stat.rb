@@ -1,0 +1,2 @@
+class UnitStat < ApplicationRecord
+end
