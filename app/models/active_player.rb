@@ -1,2 +1,0 @@
-class ActivePlayer < ApplicationRecord
-end

@@ -1,2 +1,0 @@
-class ActiveBuff < ApplicationRecord
-end

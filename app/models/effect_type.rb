@@ -1,2 +1,0 @@
-class EffectType < ApplicationRecord
-end
