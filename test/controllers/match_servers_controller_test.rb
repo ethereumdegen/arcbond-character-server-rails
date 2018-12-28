@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class MatchControllerTest < ActionDispatch::IntegrationTest
+class MatchServersControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

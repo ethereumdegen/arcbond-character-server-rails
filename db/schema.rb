@@ -10,82 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_26_225714) do
+ActiveRecord::Schema.define(version: 2018_12_28_013141) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "active_buffs", force: :cascade do |t|
-    t.integer "unit_id"
-    t.integer "buff_id"
-    t.integer "buff_started_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "active_players", force: :cascade do |t|
-    t.integer "player_id"
-    t.integer "unit_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "applied_effects", force: :cascade do |t|
-    t.integer "applied_id"
-    t.string "applied_type"
-    t.integer "effect_type_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "buff_types", force: :cascade do |t|
+  create_table "match_servers", force: :cascade do |t|
+    t.string "ip_address"
+    t.integer "port"
     t.string "name"
-    t.string "icon"
+    t.integer "mode"
+    t.integer "active_players"
+    t.integer "max_players"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "effect_types", force: :cascade do |t|
+  create_table "players", force: :cascade do |t|
     t.string "name"
-    t.integer "effect_base"
-    t.integer "art_effect"
-    t.integer "art_attachment_point"
-    t.integer "duration"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "item_types", force: :cascade do |t|
-    t.string "name"
-    t.string "icon"
-    t.string "art"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "matches", force: :cascade do |t|
-    t.integer "tick_count"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "spell_types", force: :cascade do |t|
-    t.string "name"
-    t.integer "cast_style"
-    t.string "icon"
-    t.integer "cooldown"
-    t.integer "manacost"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "unit_stats", force: :cascade do |t|
-    t.integer "life"
-    t.integer "mana"
-    t.float "x"
-    t.float "y"
-    t.float "z"
-    t.float "r"
+    t.string "uuid"
+    t.integer "status"
+    t.integer "in_match_server_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
