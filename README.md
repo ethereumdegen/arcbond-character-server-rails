@@ -3,22 +3,10 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
 
-* Ruby version
+sudo -i -u postgres;
+create role dev with createdb login password 'password';
+CREATE DATABASE spellhack_dev OWNER dev;
+CREATE DATABASE spellhack_test OWNER dev;
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+##### webpack

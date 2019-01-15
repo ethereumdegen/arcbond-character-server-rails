@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  key: MyString
+  distributed: false
+  activated: false
+  platform: MyString
+
+two:
+  key: MyString
+  distributed: false
+  activated: false
+  platform: MyString
