@@ -1,0 +1,2 @@
+class InventorySlot < ApplicationRecord
+end

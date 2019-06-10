@@ -1,2 +1,0 @@
-class MatchServer < ApplicationRecord
-end

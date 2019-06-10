@@ -10,47 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_15_155146) do
+ActiveRecord::Schema.define(version: 0) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "licenses", force: :cascade do |t|
-    t.string "key"
-    t.boolean "distributed"
-    t.boolean "activated"
-    t.string "platform"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "match_servers", force: :cascade do |t|
-    t.string "ip_address"
-    t.integer "port"
-    t.string "name"
-    t.integer "mode"
-    t.integer "active_players"
-    t.integer "max_players"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "play_sessions", force: :cascade do |t|
-    t.integer "license_id"
-    t.datetime "play_start"
-    t.datetime "last_observed"
-    t.string "platform"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "players", force: :cascade do |t|
-    t.string "name"
-    t.string "uuid"
-    t.integer "status"
-    t.integer "in_match_server_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
 end

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  slot_id: 1
+  item_id: 1
+  item_name: MyString
+  item_quantity: 1
+
+two:
+  slot_id: 1
+  item_id: 1
+  item_name: MyString
+  item_quantity: 1

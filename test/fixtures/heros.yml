@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  uuid: 1
+  version_number: 1
+  name: MyString
+  faction_id: 1
+
+two:
+  uuid: 1
+  version_number: 1
+  name: MyString
+  faction_id: 1

@@ -1,2 +1,0 @@
-class License < ApplicationRecord
-end
