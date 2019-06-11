@@ -28,4 +28,28 @@ class Hero < ApplicationRecord
     return new_hero
   end
 
+
+  def add_quests(array)
+  end
+
+  def add_perks(array)
+  end
+
+  def add_spells(array)
+  end
+
+  #used for loading
+  def get_all_hero_datasets
+    result = {custom_uuid: self.custom_uuid}
+
+    result.quests = []
+
+    result.perks = []
+
+    result.spells = []
+
+
+    return result
+  end
+
 end

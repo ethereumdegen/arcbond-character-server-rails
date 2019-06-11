@@ -6,7 +6,11 @@ Rails.application.routes.draw do
 
 
 
-  get '/hero/create', to: 'hero#create_hero' 
+  post '/hero/create', to: 'hero#create_hero'
+  post '/hero/save', to: 'hero#save_hero'
+
+  post '/hero/load', to: 'hero#load_hero', as: :load_hero
+
 
 
 end
