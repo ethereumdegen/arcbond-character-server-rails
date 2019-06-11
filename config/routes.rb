@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
 
 
-
+  get '/hero/create', to: 'hero#create_hero' 
 
 
 end

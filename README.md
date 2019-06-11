@@ -8,4 +8,5 @@ create role dev with createdb login password 'password';
 CREATE DATABASE spellhack_heroes_dev OWNER dev;
 CREATE DATABASE spellhack_heroes_test OWNER dev;
 
-##### webpack
+##### Running tests
+rake test

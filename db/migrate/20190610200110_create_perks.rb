@@ -3,7 +3,7 @@ class CreatePerks < ActiveRecord::Migration[5.2]
     create_table :perks do |t|
       t.string :name
       t.integer :level
-      t.integer :hero_uuid
+      t.string :hero_custom_uuid, index:true 
 
       t.timestamps
     end

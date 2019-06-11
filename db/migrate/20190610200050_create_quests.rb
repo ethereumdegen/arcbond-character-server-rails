@@ -3,7 +3,7 @@ class CreateQuests < ActiveRecord::Migration[5.2]
     create_table :quests do |t|
       t.string :name
       t.integer :quest_progress
-      t.integer :hero_uuid
+      t.string :hero_custom_uuid, index:true 
 
       t.timestamps
     end
