@@ -2,9 +2,9 @@ class Hero < ApplicationRecord
 
   require 'securerandom'
 
-  has_many :quests
-  has_many :perks
-  has_many :spells
+  has_many :quests, primary_key: "custom_uuid", foreign_key: "hero_custom_uuid", class_name: "Quest"
+  has_many :perks, primary_key: "custom_uuid", foreign_key: "hero_custom_uuid", class_name: "Perk"
+  has_many :spells, primary_key: "custom_uuid", foreign_key: "hero_custom_uuid", class_name: "Spell"
   has_many :inventory_slots
 
 
@@ -41,12 +41,12 @@ class Hero < ApplicationRecord
   #used for loading
   def get_all_hero_datasets
     result = {custom_uuid: self.custom_uuid}
+ 
+    result[:quests] = []
 
-    result.quests = []
+    result[:perks] = []
 
-    result.perks = []
-
-    result.spells = []
+    result[:spells] = []
 
 
     return result
