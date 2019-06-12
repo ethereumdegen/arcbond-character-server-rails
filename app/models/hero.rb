@@ -22,7 +22,7 @@ class Hero < ApplicationRecord
     new_hero = Hero.new
 
     new_hero.custom_uuid = SecureRandom.uuid
-    new_hero.faction = factions[:none]
+    new_hero.faction = factions[:nofaction]
 
 
 
@@ -77,6 +77,9 @@ class Hero < ApplicationRecord
   #used for loading
   def get_all_hero_datasets
     result = {custom_uuid: self.custom_uuid}
+
+    result[:faction] = self.faction
+    result[:version_number] = self.version_number
 
     result[:quests] = []
     self.quests.each do |item|

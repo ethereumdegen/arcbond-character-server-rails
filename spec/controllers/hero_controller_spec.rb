@@ -38,6 +38,8 @@ RSpec.describe HeroController do
       sample_stat_array = [{name: 'gold', amount:99 }]
 
       post :save_hero, :params => {uuid: newhero.custom_uuid,
+                                  version_number: 111,
+                                  faction: 'elemental',
                                   quests: sample_quest_array,
                                   perks: sample_perk_array,
                                   spells: sample_spell_array,
@@ -47,7 +49,7 @@ RSpec.describe HeroController do
 
       post :load_hero, :params => {uuid: newhero.custom_uuid}
 
-
+      p 'load response:'
       p response.body
       expect(response).to be_truthy
 

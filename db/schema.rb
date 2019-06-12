@@ -23,10 +23,9 @@ ActiveRecord::Schema.define(version: 2019_06_12_183436) do
 
   create_table "heros", force: :cascade do |t|
     t.string "custom_uuid"
-    t.integer "version_number"
+    t.integer "version_number", default: 0, null: false
     t.string "name"
-    t.integer "faction"
-    t.integer "latest_hero_session_id"
+    t.integer "faction", default: 0, null: false
     t.datetime "last_session_start"
     t.datetime "last_session_end"
     t.datetime "created_at", null: false
