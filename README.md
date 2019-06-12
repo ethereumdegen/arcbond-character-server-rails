@@ -25,8 +25,8 @@ See the /Config/Routes file for the POST requests that can be sent.
 
 2. /hero/save accepts many parameters (the UUID, the version number, arrays of quests, perks, stats, and more) and saves all of that data to the SQL database properly
 
-3. /hero/load accepts only a hero UUID as a parameter and returns JSON of all of the hero data from the last time the hero was 'saved' 
+3. /hero/load accepts only a hero UUID as a parameter and returns JSON of all of the hero data from the last time the hero was 'saved'
 
 
 ##### Running tests
-rake test
+rake spec
