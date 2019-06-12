@@ -35,47 +35,47 @@ ActiveRecord::Schema.define(version: 2019_06_12_183436) do
   end
 
   create_table "inventory_slots", force: :cascade do |t|
-    t.integer "slot_id"
-    t.integer "item_id"
-    t.string "item_name"
-    t.integer "item_quantity"
-    t.string "hero_custom_uuid"
+    t.integer "slot_id", default: 0, null: false
+    t.integer "item_id", default: 0, null: false
+    t.string "item_name", null: false
+    t.integer "item_quantity", default: 0, null: false
+    t.string "hero_custom_uuid", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["hero_custom_uuid"], name: "index_inventory_slots_on_hero_custom_uuid"
   end
 
   create_table "perks", force: :cascade do |t|
-    t.string "name"
-    t.integer "level"
-    t.string "hero_custom_uuid"
+    t.string "name", null: false
+    t.integer "level", default: 0, null: false
+    t.string "hero_custom_uuid", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["hero_custom_uuid"], name: "index_perks_on_hero_custom_uuid"
   end
 
   create_table "quests", force: :cascade do |t|
-    t.string "name"
-    t.integer "progress"
-    t.string "hero_custom_uuid"
+    t.string "name", null: false
+    t.integer "progress", default: 0, null: false
+    t.string "hero_custom_uuid", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["hero_custom_uuid"], name: "index_quests_on_hero_custom_uuid"
   end
 
   create_table "spells", force: :cascade do |t|
-    t.string "name"
-    t.string "hero_custom_uuid"
-    t.boolean "learned"
+    t.string "name", null: false
+    t.boolean "learned", null: false
+    t.string "hero_custom_uuid", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["hero_custom_uuid"], name: "index_spells_on_hero_custom_uuid"
   end
 
   create_table "stats", force: :cascade do |t|
-    t.string "name"
-    t.integer "amount"
-    t.string "hero_custom_uuid"
+    t.string "name", null: false
+    t.integer "amount", default: 0, null: false
+    t.string "hero_custom_uuid", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["hero_custom_uuid"], name: "index_stats_on_hero_custom_uuid"
