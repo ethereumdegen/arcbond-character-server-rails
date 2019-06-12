@@ -20,7 +20,7 @@ class HeroController < ApplicationController
 
     new_version_number = params[:version_number].to_i
 
-     
+
     if(new_version_number < @hero.version_number )
       render json: [success:false, message: 'cannot decrement hero version']
     end
@@ -70,8 +70,13 @@ class HeroController < ApplicationController
 
     @hero = Hero.find_by(custom_uuid:uuid)
 
-    render json: @hero.get_all_hero_datasets.to_json
-  end
+    if @hero
+      render json: [success:true, hero: @hero.get_all_hero_datasets.to_json]
+    else
+      render json: [success:false]
+    end
+
+    end
 
   private
 
