@@ -22,6 +22,7 @@ class HeroController < ApplicationController
     perks = params[:perks]
     spells = params[:spells]
     inventory_slots = params[:inventory_slots]
+    stats = params[:stats]
 
     if(quests !=  nil && quests.length >= 1)
       @hero.quests.delete_all  #all children stay
@@ -41,6 +42,11 @@ class HeroController < ApplicationController
     if(inventory_slots !=  nil && inventory_slots.length >= 1)
       @hero.inventory_slots.delete_all  #all children stay
       @hero.add_inventory_slots(inventory_slot_params)
+    end
+
+    if(stats !=  nil && stats.length >= 1)
+      @hero.stats.delete_all  #all children stay
+      @hero.add_stats(stat_params)
     end
 
 
@@ -94,5 +100,13 @@ class HeroController < ApplicationController
     end
   end
 
+  def stat_params
+    params.require(:stats).map do |p|
+      p.permit(
+        :name,
+        :amount
+      )
+    end
+  end
 
 end

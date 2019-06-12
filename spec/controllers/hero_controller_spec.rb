@@ -35,12 +35,15 @@ RSpec.describe HeroController do
       sample_perk_array = [{name: 'sampleperk', level: 1}]
       sample_spell_array = [{name: 'samplespell', learned: true}]
       sample_inventory_array = [{name: 'sampleinventory', slot_id: 1, item_id: 1, item_name: 'firstitem'}]
+      sample_stat_array = [{name: 'gold', amount:99 }]
 
       post :save_hero, :params => {uuid: newhero.custom_uuid,
                                   quests: sample_quest_array,
                                   perks: sample_perk_array,
                                   spells: sample_spell_array,
-                                  inventory_slots: sample_inventory_array}
+                                  inventory_slots: sample_inventory_array,
+                                  stats: sample_stat_array
+                                }
 
       post :load_hero, :params => {uuid: newhero.custom_uuid}
 

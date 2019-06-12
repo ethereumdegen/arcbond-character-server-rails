@@ -6,6 +6,7 @@ class Hero < ApplicationRecord
   has_many :perks, primary_key: "custom_uuid", foreign_key: "hero_custom_uuid", class_name: "Perk"
   has_many :spells, primary_key: "custom_uuid", foreign_key: "hero_custom_uuid", class_name: "Spell"
   has_many :inventory_slots, primary_key: "custom_uuid", foreign_key: "hero_custom_uuid", class_name: "InventorySlot"
+  has_many :stats, primary_key: "custom_uuid", foreign_key: "hero_custom_uuid", class_name: "Stat"
 
 
   enum faction: {
@@ -61,6 +62,18 @@ class Hero < ApplicationRecord
     self.save
   end
 
+  def add_stats(array)
+    array.each do |item|
+      if(Stat.stat_name_permitted?(item[:name]))
+        self.stats.build( item )
+      else
+        p 'stat ' + item[:name] + ' not permitted!'
+      end
+    end
+
+    self.save
+  end
+
   #used for loading
   def get_all_hero_datasets
     result = {custom_uuid: self.custom_uuid}
@@ -83,6 +96,11 @@ class Hero < ApplicationRecord
     result[:inventory_slots] = []
     self.inventory_slots.each do |item|
       result[:inventory_slots] << item.get_json
+    end
+
+    result[:stats] = []
+    self.stats.each do |item|
+      result[:stats] << item.get_json
     end
 
     return result
