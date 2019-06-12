@@ -5,7 +5,7 @@ class Hero < ApplicationRecord
   has_many :quests, primary_key: "custom_uuid", foreign_key: "hero_custom_uuid", class_name: "Quest"
   has_many :perks, primary_key: "custom_uuid", foreign_key: "hero_custom_uuid", class_name: "Perk"
   has_many :spells, primary_key: "custom_uuid", foreign_key: "hero_custom_uuid", class_name: "Spell"
-  has_many :inventory_slots
+  has_many :inventory_slots, primary_key: "custom_uuid", foreign_key: "hero_custom_uuid", class_name: "InventorySlot"
 
 
   enum faction: {
@@ -30,26 +30,65 @@ class Hero < ApplicationRecord
 
 
   def add_quests(array)
+    array.each do |item|
+      self.quests.build( item )
+    end
+
+    self.save
   end
 
   def add_perks(array)
+    array.each do |item|
+      self.perks.build( item )
+    end
+
+    self.save
   end
 
   def add_spells(array)
+    array.each do |item|
+      self.spells.build( item )
+    end
+
+    self.save
+  end
+
+  def add_inventory_slots(array)
+    array.each do |item|
+      self.inventory_slots.build( item )
+    end
+
+    self.save
   end
 
   #used for loading
   def get_all_hero_datasets
     result = {custom_uuid: self.custom_uuid}
- 
+
     result[:quests] = []
+    self.quests.each do |item|
+      result[:quests] << item.get_json
+    end
 
     result[:perks] = []
+    self.perks.each do |item|
+      result[:perks] << item.get_json
+    end
 
     result[:spells] = []
+    self.spells.each do |item|
+      result[:spells] << item.get_json
+    end
 
+    result[:inventory_slots] = []
+    self.inventory_slots.each do |item|
+      result[:inventory_slots] << item.get_json
+    end
 
     return result
   end
+
+
+
 
 end

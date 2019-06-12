@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2019_06_10_200148) do
 
   create_table "quests", force: :cascade do |t|
     t.string "name"
-    t.integer "quest_progress"
+    t.integer "progress"
     t.string "hero_custom_uuid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 2019_06_10_200148) do
   create_table "spells", force: :cascade do |t|
     t.string "name"
     t.string "hero_custom_uuid"
+    t.boolean "learned"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["hero_custom_uuid"], name: "index_spells_on_hero_custom_uuid"
