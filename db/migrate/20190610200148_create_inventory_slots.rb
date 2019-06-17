@@ -5,7 +5,7 @@ class CreateInventorySlots < ActiveRecord::Migration[5.2]
       t.integer :item_id, default: 0, null: false
       t.string :item_name, null: false
       t.integer :item_quantity, default: 0, null: false
-      t.string :hero_custom_uuid, null: false, index:true
+      t.string :hero_uuid, null: false, index:true
 
       t.timestamps
     end

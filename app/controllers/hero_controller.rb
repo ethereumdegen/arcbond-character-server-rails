@@ -11,12 +11,12 @@ class HeroController < ApplicationController
     @hero = Hero.build_new_hero
     @hero.save!
 
-     render json: {success:true, hero: @hero.to_json} #@hero.custom_uuid
+     render json: {success:true, hero: @hero} #@hero.hero_uuid
   end
 
   def save_hero
     uuid = params[:uuid]
-    @hero = Hero.find_by(custom_uuid:uuid)
+    @hero = Hero.find_by(hero_uuid:uuid)
 
     new_version_number = params[:version_number].to_i
 
@@ -62,16 +62,16 @@ class HeroController < ApplicationController
 
     @hero.save
 
-    render json: {success:true, hero: @hero.get_all_hero_datasets.to_json}
+    render json: {success:true, hero: @hero.get_all_hero_datasets}
   end
 
   def load_hero
-    uuid = params[:uuid]
+    uuid = params[:hero_uuid]
 
-    @hero = Hero.find_by(custom_uuid:uuid)
+    @hero = Hero.find_by(hero_uuid:uuid)
 
     if @hero
-      render json: {success:true, hero: @hero.get_all_hero_datasets.to_json}
+      render json: {success:true, hero: @hero.get_all_hero_datasets}
     else
       render json: {success:false}
     end

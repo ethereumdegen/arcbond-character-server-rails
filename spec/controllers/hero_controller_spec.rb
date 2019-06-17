@@ -12,14 +12,14 @@ RSpec.describe HeroController do
       post :create_hero
 
       newhero = Hero.last
-      expect(newhero.custom_uuid).to be_truthy
+      expect(newhero.hero_uuid).to be_truthy
     end
 
     it "load hero" do
        post :create_hero
        newhero = Hero.last
       #result = controller.create_hero
-      post :load_hero, :params => {uuid: newhero.custom_uuid}
+      post :load_hero, :params => {uuid: newhero.hero_uuid}
 
       p response.body
       expect(response).to be_truthy
@@ -37,7 +37,7 @@ RSpec.describe HeroController do
       sample_inventory_array = [{name: 'sampleinventory', slot_id: 1, item_id: 1, item_name: 'firstitem'}]
       sample_stat_array = [{name: 'gold', amount:99 }]
 
-      post :save_hero, :params => {uuid: newhero.custom_uuid,
+      post :save_hero, :params => {uuid: newhero.hero_uuid,
                                   version_number: 111,
                                   faction: 'elemental',
                                   quests: sample_quest_array,
@@ -47,7 +47,7 @@ RSpec.describe HeroController do
                                   stats: sample_stat_array
                                 }
 
-      post :load_hero, :params => {uuid: newhero.custom_uuid}
+      post :load_hero, :params => {uuid: newhero.hero_uuid}
 
       p 'load response:'
       p response.body

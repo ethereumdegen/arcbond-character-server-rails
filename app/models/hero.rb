@@ -2,11 +2,11 @@ class Hero < ApplicationRecord
 
   require 'securerandom'
 
-  has_many :quests, primary_key: "custom_uuid", foreign_key: "hero_custom_uuid", class_name: "Quest"
-  has_many :perks, primary_key: "custom_uuid", foreign_key: "hero_custom_uuid", class_name: "Perk"
-  has_many :spells, primary_key: "custom_uuid", foreign_key: "hero_custom_uuid", class_name: "Spell"
-  has_many :inventory_slots, primary_key: "custom_uuid", foreign_key: "hero_custom_uuid", class_name: "InventorySlot"
-  has_many :stats, primary_key: "custom_uuid", foreign_key: "hero_custom_uuid", class_name: "Stat"
+  has_many :quests, primary_key: "hero_uuid", foreign_key: "hero_uuid", class_name: "Quest"
+  has_many :perks, primary_key: "hero_uuid", foreign_key: "hero_uuid", class_name: "Perk"
+  has_many :spells, primary_key: "hero_uuid", foreign_key: "hero_uuid", class_name: "Spell"
+  has_many :inventory_slots, primary_key: "hero_uuid", foreign_key: "hero_uuid", class_name: "InventorySlot"
+  has_many :stats, primary_key: "hero_uuid", foreign_key: "hero_uuid", class_name: "Stat"
 
 
   enum faction: {
@@ -21,7 +21,7 @@ class Hero < ApplicationRecord
   def self.build_new_hero
     new_hero = Hero.new
 
-    new_hero.custom_uuid = SecureRandom.uuid
+    new_hero.hero_uuid = SecureRandom.uuid
     new_hero.faction = factions[:nofaction]
 
 
@@ -76,7 +76,7 @@ class Hero < ApplicationRecord
 
   #used for loading
   def get_all_hero_datasets
-    result = {custom_uuid: self.custom_uuid}
+    result = {hero_uuid: self.hero_uuid}
 
     result[:faction] = self.faction
     result[:version_number] = self.version_number
