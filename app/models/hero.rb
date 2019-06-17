@@ -6,6 +6,7 @@ class Hero < ApplicationRecord
   has_many :perks, primary_key: "hero_uuid", foreign_key: "hero_uuid", class_name: "Perk"
   has_many :spells, primary_key: "hero_uuid", foreign_key: "hero_uuid", class_name: "Spell"
   has_many :inventory_slots, primary_key: "hero_uuid", foreign_key: "hero_uuid", class_name: "InventorySlot"
+  has_many :equipment_slots, primary_key: "hero_uuid", foreign_key: "hero_uuid", class_name: "EquipmentSlot"
   has_many :stats, primary_key: "hero_uuid", foreign_key: "hero_uuid", class_name: "Stat"
 
 
@@ -61,6 +62,15 @@ class Hero < ApplicationRecord
 
     self.save
   end
+
+  def add_equipment_slots(array)
+    array.each do |item|
+      self.equipment_slots.build( item )
+    end
+
+    self.save
+  end
+
 
   def add_stats(array)
     array.each do |item|

@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_12_183436) do
+ActiveRecord::Schema.define(version: 2019_06_17_213551) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "equipment_slots", force: :cascade do |t|
+    t.integer "slot_id", default: 0, null: false
+    t.integer "item_id", default: 0, null: false
+    t.string "name", null: false
+    t.integer "quantity", default: 0, null: false
+    t.string "hero_uuid", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hero_uuid"], name: "index_equipment_slots_on_hero_uuid"
+  end
 
   create_table "heros", force: :cascade do |t|
     t.string "hero_uuid"
@@ -30,8 +41,8 @@ ActiveRecord::Schema.define(version: 2019_06_12_183436) do
   create_table "inventory_slots", force: :cascade do |t|
     t.integer "slot_id", default: 0, null: false
     t.integer "item_id", default: 0, null: false
-    t.string "item_name", null: false
-    t.integer "item_quantity", default: 0, null: false
+    t.string "name", null: false
+    t.integer "quantity", default: 0, null: false
     t.string "hero_uuid", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -42,6 +53,7 @@ ActiveRecord::Schema.define(version: 2019_06_12_183436) do
     t.string "name", null: false
     t.integer "level", default: 0, null: false
     t.string "hero_uuid", null: false
+    t.integer "slot_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["hero_uuid"], name: "index_perks_on_hero_uuid"
@@ -60,6 +72,7 @@ ActiveRecord::Schema.define(version: 2019_06_12_183436) do
     t.string "name", null: false
     t.boolean "learned", null: false
     t.string "hero_uuid", null: false
+    t.integer "slot_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["hero_uuid"], name: "index_spells_on_hero_uuid"

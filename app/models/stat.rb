@@ -3,11 +3,10 @@ class Stat < ApplicationRecord
   # the bare minimum necessary to save
 
   def self.permitted_stats
-    return [
-      'max_life',
-      'max_mana',
+    return [ 
+      'skillpoints',
       'gold',
-      'total_experience'
+      'experiencetotal'
     ]
   end
 

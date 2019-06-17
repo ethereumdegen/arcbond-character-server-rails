@@ -15,7 +15,7 @@ class HeroController < ApplicationController
   end
 
   def save_hero
-    uuid = params[:uuid]
+    uuid = params[:hero_uuid]
     @hero = Hero.find_by(hero_uuid:uuid)
 
     new_version_number = params[:version_number].to_i
@@ -33,30 +33,36 @@ class HeroController < ApplicationController
     perks = params[:perks]
     spells = params[:spells]
     inventory_slots = params[:inventory_slots]
+    equipment_slots = params[:equipment_slots]
     stats = params[:stats]
 
     if(quests !=  nil && quests.length >= 1)
-      @hero.quests.delete_all  #all children stay
+      @hero.quests.destroy_all  #all children stay
       @hero.add_quests(quest_params)
     end
 
     if(perks !=  nil && perks.length >= 1)
-      @hero.perks.delete_all  #all children stay
+      @hero.perks.destroy_all  #all children stay
       @hero.add_perks(perk_params)
     end
 
     if(spells !=  nil && spells.length >= 1)
-      @hero.spells.delete_all  #all children stay
+      @hero.spells.destroy_all  #all children stay
       @hero.add_spells(spell_params)
     end
 
     if(inventory_slots !=  nil && inventory_slots.length >= 1)
-      @hero.inventory_slots.delete_all  #all children stay
+      @hero.inventory_slots.destroy_all  #all children stay
       @hero.add_inventory_slots(inventory_slot_params)
     end
 
+    if(equipment_slots !=  nil && equipment_slots.length >= 1)
+      @hero.equipment_slots.destroy_all  #all children stay
+      @hero.add_equipment_slots(equipment_slot_params)
+    end
+
     if(stats !=  nil && stats.length >= 1)
-      @hero.stats.delete_all  #all children stay
+      @hero.stats.destroy_all  #all children stay
       @hero.add_stats(stat_params)
     end
 
@@ -88,7 +94,8 @@ class HeroController < ApplicationController
     params.require(:perks).map do |p|
       p.permit(
         :name,
-        :level
+        :level,
+        :slot_id
       )
     end
   end
@@ -105,7 +112,8 @@ class HeroController < ApplicationController
     params.require(:spells).map do |p|
       p.permit(
         :name,
-        :learned
+        :learned,
+        :slot_id
       )
     end
   end
@@ -115,8 +123,19 @@ class HeroController < ApplicationController
       p.permit(
         :slot_id,
         :item_id,
-        :item_name,
-        :item_quantity
+        :name,
+        :quantity
+      )
+    end
+  end
+
+  def equipment_slot_params
+    params.require(:equipment_slots).map do |p|
+      p.permit(
+        :slot_id,
+        :item_id,
+        :name,
+        :quantity
       )
     end
   end
