@@ -15,12 +15,6 @@ ActiveRecord::Schema.define(version: 2019_06_12_183436) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "factions", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "heros", force: :cascade do |t|
     t.string "custom_uuid"
     t.integer "version_number", default: 0, null: false

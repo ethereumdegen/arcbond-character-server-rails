@@ -11,7 +11,7 @@ class HeroController < ApplicationController
     @hero = Hero.build_new_hero
     @hero.save!
 
-     render json: @hero.to_json #@hero.custom_uuid
+     render json: {success:true, hero: @hero.to_json} #@hero.custom_uuid
   end
 
   def save_hero
@@ -22,7 +22,7 @@ class HeroController < ApplicationController
 
 
     if(new_version_number < @hero.version_number )
-      render json: [success:false, message: 'cannot decrement hero version']
+      render json: {success:false, message: 'cannot decrement hero version'}
     end
 
     @hero.version_number = new_version_number
@@ -62,7 +62,7 @@ class HeroController < ApplicationController
 
     @hero.save
 
-    render json: [success:true, hero: @hero.get_all_hero_datasets.to_json]
+    render json: {success:true, hero: @hero.get_all_hero_datasets.to_json}
   end
 
   def load_hero
@@ -71,12 +71,16 @@ class HeroController < ApplicationController
     @hero = Hero.find_by(custom_uuid:uuid)
 
     if @hero
-      render json: [success:true, hero: @hero.get_all_hero_datasets.to_json]
+      render json: {success:true, hero: @hero.get_all_hero_datasets.to_json}
     else
-      render json: [success:false]
+      render json: {success:false}
     end
 
-    end
+  end
+
+  def index
+     render json: 'hello world '
+  end
 
   private
 
