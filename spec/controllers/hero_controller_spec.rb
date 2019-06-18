@@ -32,12 +32,12 @@ RSpec.describe HeroController do
       newhero = Hero.last
 
       sample_quest_array = [{name: 'startedquest', progress: 1},{name: 'finishedquest', progress: 2}]
-      sample_perk_array = [{name: 'sampleperk', level: 1}]
-      sample_spell_array = [{name: 'samplespell', learned: true}]
-      sample_inventory_array = [{name: 'sampleinventory', slot_id: 1, item_id: 1, item_name: 'firstitem'}]
+      sample_perk_array = [{name: 'sampleperk', level: 1, slot_id: 1 }]
+      sample_spell_array = [{name: 'samplespell', learned: true, slot_id: 1 }]
+      sample_inventory_array = [{name: 'sampleinventory', slot_id: 1, item_id: 1, name: 'firstitem'}]
       sample_stat_array = [{name: 'gold', amount:99 }]
 
-      post :save_hero, :params => {uuid: newhero.hero_uuid,
+      post :save_hero, :params => {hero_uuid: newhero.hero_uuid,
                                   version_number: 111,
                                   faction: 'elemental',
                                   quests: sample_quest_array,

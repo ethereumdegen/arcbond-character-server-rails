@@ -10,7 +10,7 @@ class Quest < ApplicationRecord
 
 
  def get_json
-   return [name: self.name, progress:self.progress ]
+   return {name: self.name, progress:self.progress}
  end
 
 end

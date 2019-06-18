@@ -111,11 +111,17 @@ class Hero < ApplicationRecord
       result[:inventory_slots] << item.get_json
     end
 
+    result[:equipment_slots] = []
+    self.equipment_slots.each do |item|
+      result[:equipment_slots] << item.get_json
+    end
+
     result[:stats] = []
     self.stats.each do |item|
       result[:stats] << item.get_json
     end
 
+    p result
     return result
   end
 

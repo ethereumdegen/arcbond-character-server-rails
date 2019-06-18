@@ -3,7 +3,7 @@ class Stat < ApplicationRecord
   # the bare minimum necessary to save
 
   def self.permitted_stats
-    return [ 
+    return [
       'skillpoints',
       'gold',
       'experiencetotal'
@@ -16,7 +16,7 @@ class Stat < ApplicationRecord
   end
 
   def get_json
-    return [name: self.name, amount: self.amount ]
+    return {name: self.name, amount: self.amount}
   end
 
 end
