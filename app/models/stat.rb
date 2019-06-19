@@ -12,7 +12,7 @@ class Stat < ApplicationRecord
 
 
   def self.stat_name_permitted?(statname)
-    return permitted_stats.include?(statname)
+    return permitted_stats.include?(statname.downcase)
   end
 
   def get_json

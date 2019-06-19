@@ -68,6 +68,9 @@ class HeroController < ApplicationController
 
     @hero.save
 
+    p 'saved hero'
+    p @hero
+
     render json: {success:true, hero: @hero.get_all_hero_datasets}
   end
 
