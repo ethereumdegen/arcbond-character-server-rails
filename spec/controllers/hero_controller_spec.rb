@@ -37,8 +37,10 @@ RSpec.describe HeroController do
       sample_quest_array = [{name: 'startedquest', progress: 1},{name: 'finishedquest', progress: 2}]
       sample_perk_array = [{name: 'sampleperk', level: 1, slot_id: 1 }]
       sample_spell_array = [{name: 'samplespell', learned: true, slot_id: 1 }]
-      sample_inventory_array = [{name: 'sampleinventory', slot_id: 1, item_id: 1, name: 'firstitem'}]
+      sample_inventory_array = [{name: 'sampleinventory', slot_id: 1, item_id: 1 }]
       sample_stat_array = [{name: 'Gold', amount:99 }]
+      sample_ability_bar_config_array = [{slot_id: 2, ability_name: 'tempest' }]
+      sample_custom_tag_array = [{name: 'beacon', value:'necro' }]
 
       post :save_hero, :params => {hero_uuid: newhero.hero_uuid,
                                   version_number: 111,
@@ -47,7 +49,9 @@ RSpec.describe HeroController do
                                   perks: sample_perk_array,
                                   spells: sample_spell_array,
                                   inventory_slots: sample_inventory_array,
-                                  stats: sample_stat_array
+                                  stats: sample_stat_array,
+                                  ability_bar_configs: sample_ability_bar_config_array  ,
+                                  custom_tags: sample_custom_tag_array
                                 }
 
 

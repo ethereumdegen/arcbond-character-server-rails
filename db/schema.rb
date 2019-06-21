@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_17_213551) do
+ActiveRecord::Schema.define(version: 2019_06_21_140048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ability_bar_configs", force: :cascade do |t|
+    t.string "hero_uuid", null: false
+    t.integer "slot_id", null: false
+    t.string "ability_name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hero_uuid"], name: "index_ability_bar_configs_on_hero_uuid"
+  end
+
+  create_table "custom_tags", force: :cascade do |t|
+    t.string "hero_uuid", null: false
+    t.string "name", null: false
+    t.string "value", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hero_uuid"], name: "index_custom_tags_on_hero_uuid"
+  end
 
   create_table "equipment_slots", force: :cascade do |t|
     t.integer "slot_id", default: 0, null: false
@@ -24,6 +42,12 @@ ActiveRecord::Schema.define(version: 2019_06_17_213551) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["hero_uuid"], name: "index_equipment_slots_on_hero_uuid"
+  end
+
+  create_table "factions", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "heros", force: :cascade do |t|

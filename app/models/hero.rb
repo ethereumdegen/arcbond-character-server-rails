@@ -8,6 +8,8 @@ class Hero < ApplicationRecord
   has_many :inventory_slots, primary_key: "hero_uuid", foreign_key: "hero_uuid", class_name: "InventorySlot"
   has_many :equipment_slots, primary_key: "hero_uuid", foreign_key: "hero_uuid", class_name: "EquipmentSlot"
   has_many :stats, primary_key: "hero_uuid", foreign_key: "hero_uuid", class_name: "Stat"
+  has_many :ability_bar_configs, primary_key: "hero_uuid", foreign_key: "hero_uuid", class_name: "AbilityBarConfig"
+  has_many :custom_tags, primary_key: "hero_uuid", foreign_key: "hero_uuid", class_name: "CustomTag"
 
 
   enum faction: {
@@ -71,6 +73,22 @@ class Hero < ApplicationRecord
     self.save
   end
 
+  def add_ability_bar_configs(array)
+    array.each do |item|
+      self.ability_bar_configs.build( item )
+    end
+
+    self.save
+  end
+
+  def add_custom_tags(array)
+    array.each do |item|
+      self.custom_tags.build( item )
+    end
+
+    self.save
+  end
+
 
   def add_stats(array)
     array.each do |item|
@@ -120,6 +138,18 @@ class Hero < ApplicationRecord
     self.stats.each do |item|
       result[:stats] << item.get_json
     end
+
+    result[:ability_bar_configs] = []
+    self.ability_bar_configs.each do |item|
+      result[:ability_bar_configs] << item.get_json
+    end
+
+
+    result[:custom_tags] = []
+    self.custom_tags.each do |item|
+      result[:custom_tags] << item.get_json
+    end
+
 
     p result
     return result

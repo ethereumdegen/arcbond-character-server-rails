@@ -35,6 +35,8 @@ class HeroController < ApplicationController
     inventory_slots = params[:inventory_slots]
     equipment_slots = params[:equipment_slots]
     stats = params[:stats]
+    ability_bar_configs = params[:ability_bar_configs]
+    custom_tags = params[:custom_tags]
 
     if(quests !=  nil && quests.length >= 1)
       @hero.quests.destroy_all  #all children stay
@@ -64,6 +66,16 @@ class HeroController < ApplicationController
     if(stats !=  nil && stats.length >= 1)
       @hero.stats.destroy_all  #all children stay
       @hero.add_stats(stat_params)
+    end
+
+    if(ability_bar_configs !=  nil && ability_bar_configs.length >= 1)
+      @hero.ability_bar_configs.destroy_all  #all children stay
+      @hero.add_ability_bar_configs(ability_bar_config_params)
+    end
+
+    if(custom_tags !=  nil && custom_tags.length >= 1)
+      @hero.custom_tags.destroy_all  #all children stay
+      @hero.add_custom_tags(custom_tag_params)
     end
 
     @hero.save
@@ -148,6 +160,24 @@ class HeroController < ApplicationController
       p.permit(
         :name,
         :amount
+      )
+    end
+  end
+
+  def ability_bar_config_params
+    params.require(:ability_bar_configs).map do |p|
+      p.permit(
+        :slot_id,
+        :ability_name
+      )
+    end
+  end
+
+  def custom_tag_params
+    params.require(:custom_tags).map do |p|
+      p.permit(
+        :name,
+        :value
       )
     end
   end
