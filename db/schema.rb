@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2019_06_21_140048) do
   create_table "ability_bar_configs", force: :cascade do |t|
     t.string "hero_uuid", null: false
     t.integer "slot_id", null: false
-    t.string "ability_name", null: false
+    t.string "ability_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["hero_uuid"], name: "index_ability_bar_configs_on_hero_uuid"
@@ -42,12 +42,6 @@ ActiveRecord::Schema.define(version: 2019_06_21_140048) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["hero_uuid"], name: "index_equipment_slots_on_hero_uuid"
-  end
-
-  create_table "factions", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "heros", force: :cascade do |t|
