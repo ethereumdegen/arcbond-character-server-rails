@@ -9,6 +9,7 @@ class HeroController < ApplicationController
     new_uuid = SecureRandom.uuid
 
     @hero = Hero.build_new_hero
+    @hero.version_number = 101  #this version number 
     @hero.save!
 
      render json: {success:true, hero: @hero} #@hero.hero_uuid
