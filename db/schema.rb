@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_21_140048) do
+ActiveRecord::Schema.define(version: 2019_07_16_195826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,12 +36,19 @@ ActiveRecord::Schema.define(version: 2019_06_21_140048) do
   create_table "equipment_slots", force: :cascade do |t|
     t.integer "slot_id", default: 0, null: false
     t.integer "item_id", default: 0, null: false
-    t.string "name", null: false
+    t.string "item_name"
+    t.string "enchantment_name"
     t.integer "quantity", default: 0, null: false
     t.string "hero_uuid", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["hero_uuid"], name: "index_equipment_slots_on_hero_uuid"
+  end
+
+  create_table "factions", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "heros", force: :cascade do |t|
@@ -59,7 +66,8 @@ ActiveRecord::Schema.define(version: 2019_06_21_140048) do
   create_table "inventory_slots", force: :cascade do |t|
     t.integer "slot_id", default: 0, null: false
     t.integer "item_id", default: 0, null: false
-    t.string "name", null: false
+    t.string "item_name"
+    t.string "enchantment_name"
     t.integer "quantity", default: 0, null: false
     t.string "hero_uuid", null: false
     t.datetime "created_at", null: false
@@ -94,6 +102,18 @@ ActiveRecord::Schema.define(version: 2019_06_21_140048) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["hero_uuid"], name: "index_spells_on_hero_uuid"
+  end
+
+  create_table "stash_slots", force: :cascade do |t|
+    t.integer "slot_id", default: 0, null: false
+    t.integer "item_id", default: 0, null: false
+    t.string "item_name"
+    t.string "enchantment_name"
+    t.integer "quantity", default: 0, null: false
+    t.string "hero_uuid", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hero_uuid"], name: "index_stash_slots_on_hero_uuid"
   end
 
   create_table "stats", force: :cascade do |t|

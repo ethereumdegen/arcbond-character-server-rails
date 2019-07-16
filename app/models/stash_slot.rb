@@ -1,6 +1,6 @@
-class EquipmentSlot < ApplicationRecord
+class StashSlot < ApplicationRecord
 
-
+ 
     def get_json
       return {slot_id: self.slot_id,
         item_id: self.item_id,
@@ -8,7 +8,6 @@ class EquipmentSlot < ApplicationRecord
         enchantment_name: self.enchantment_name,
         quantity: self.quantity}
     end
-
 
 
 end

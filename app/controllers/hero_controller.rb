@@ -34,6 +34,7 @@ class HeroController < ApplicationController
     spells = params[:spells]
     inventory_slots = params[:inventory_slots]
     equipment_slots = params[:equipment_slots]
+    stash_slots = params[:stash_slots]
     stats = params[:stats]
     ability_bar_configs = params[:ability_bar_configs]
     custom_tags = params[:custom_tags]
@@ -61,6 +62,11 @@ class HeroController < ApplicationController
     if(equipment_slots !=  nil && equipment_slots.length >= 1)
       @hero.equipment_slots.destroy_all  #all children stay
       @hero.add_equipment_slots(equipment_slot_params)
+    end
+
+    if(stash_slots !=  nil && stash_slots.length >= 1)
+      @hero.stash_slots.destroy_all  #all children stay
+      @hero.add_stash_slots(stash_slot_params)
     end
 
     if(stats !=  nil && stats.length >= 1)
@@ -138,7 +144,8 @@ class HeroController < ApplicationController
       p.permit(
         :slot_id,
         :item_id,
-        :name,
+        :item_name,
+        :enchantment_name,
         :quantity
       )
     end
@@ -149,7 +156,20 @@ class HeroController < ApplicationController
       p.permit(
         :slot_id,
         :item_id,
-        :name,
+        :item_name,
+        :enchantment_name,
+        :quantity
+      )
+    end
+  end
+
+  def stash_slot_params
+    params.require(:equipment_slots).map do |p|
+      p.permit(
+        :slot_id,
+        :item_id,
+        :item_name,
+        :enchantment_name,
         :quantity
       )
     end

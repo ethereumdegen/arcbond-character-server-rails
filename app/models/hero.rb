@@ -7,6 +7,7 @@ class Hero < ApplicationRecord
   has_many :spells, primary_key: "hero_uuid", foreign_key: "hero_uuid", class_name: "Spell"
   has_many :inventory_slots, primary_key: "hero_uuid", foreign_key: "hero_uuid", class_name: "InventorySlot"
   has_many :equipment_slots, primary_key: "hero_uuid", foreign_key: "hero_uuid", class_name: "EquipmentSlot"
+  has_many :stash_slots, primary_key: "hero_uuid", foreign_key: "hero_uuid", class_name: "EquipmentSlot"
   has_many :stats, primary_key: "hero_uuid", foreign_key: "hero_uuid", class_name: "Stat"
   has_many :ability_bar_configs, primary_key: "hero_uuid", foreign_key: "hero_uuid", class_name: "AbilityBarConfig"
   has_many :custom_tags, primary_key: "hero_uuid", foreign_key: "hero_uuid", class_name: "CustomTag"
@@ -73,6 +74,14 @@ class Hero < ApplicationRecord
     self.save
   end
 
+  def add_stash_slots(array)
+    array.each do |item|
+      self.stash_slots.build( item )
+    end
+
+    self.save
+  end
+
   def add_ability_bar_configs(array)
     array.each do |item|
       self.ability_bar_configs.build( item )
@@ -132,6 +141,11 @@ class Hero < ApplicationRecord
     result[:equipment_slots] = []
     self.equipment_slots.each do |item|
       result[:equipment_slots] << item.get_json
+    end
+
+    result[:stash_slots] = []
+    self.stash_slots.each do |item|
+      result[:stash_slots] << item.get_json
     end
 
     result[:stats] = []
