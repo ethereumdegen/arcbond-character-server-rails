@@ -50,6 +50,7 @@ RSpec.describe HeroController do
                                   perks: sample_perk_array,
                                   spells: sample_spell_array,
                                   inventory_slots: sample_inventory_array,
+                                  stash_slots: sample_stash_array,
                                   stats: sample_stat_array,
                                   ability_bar_configs: sample_ability_bar_config_array  ,
                                   custom_tags: sample_custom_tag_array

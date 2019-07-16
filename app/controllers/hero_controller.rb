@@ -9,7 +9,7 @@ class HeroController < ApplicationController
     new_uuid = SecureRandom.uuid
 
     @hero = Hero.build_new_hero
-    @hero.version_number = 101  #this version number 
+    @hero.version_number = 101  #this version number
     @hero.save!
 
      render json: {success:true, hero: @hero} #@hero.hero_uuid
@@ -165,7 +165,7 @@ class HeroController < ApplicationController
   end
 
   def stash_slot_params
-    params.require(:equipment_slots).map do |p|
+    params.require(:stash_slots).map do |p|
       p.permit(
         :slot_id,
         :item_id,
