@@ -45,12 +45,6 @@ ActiveRecord::Schema.define(version: 2019_07_16_195826) do
     t.index ["hero_uuid"], name: "index_equipment_slots_on_hero_uuid"
   end
 
-  create_table "factions", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "heros", force: :cascade do |t|
     t.string "hero_uuid"
     t.integer "version_number", default: 0, null: false

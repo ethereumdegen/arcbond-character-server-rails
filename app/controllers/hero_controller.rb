@@ -3,13 +3,15 @@ class HeroController < ApplicationController
 
   require 'securerandom'
 
+  HERO_VERSION_NUMBER = 101
+
 
   def create_hero
 
     new_uuid = SecureRandom.uuid
 
     @hero = Hero.build_new_hero
-    @hero.version_number = 101  #this version number
+    @hero.version_number = HERO_VERSION_NUMBER  #this version number
     @hero.save!
 
      render json: {success:true, hero: @hero} #@hero.hero_uuid
@@ -19,14 +21,16 @@ class HeroController < ApplicationController
     uuid = params[:hero_uuid]
     @hero = Hero.find_by(hero_uuid:uuid)
 
-    new_version_number = params[:version_number].to_i
+    #new_version_number = params[:version_number].to_i
 
 
-    if(new_version_number < @hero.version_number )
-      render json: {success:false, message: 'cannot decrement hero version'}
-    end
+   # if(new_version_number < @hero.version_number )
+    #  render json: {success:false, message: 'cannot decrement hero version'}
+    #
+    #  return 
+   # end
 
-    @hero.version_number = new_version_number
+    #@hero.version_number = new_version_number
 
     @hero.faction = params[:faction]
 
