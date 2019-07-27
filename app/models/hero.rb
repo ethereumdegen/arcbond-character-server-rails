@@ -2,12 +2,15 @@ class Hero < ApplicationRecord
 
   require 'securerandom'
 
+
+  ##make sure no typos in this block ! 
+  
   has_many :quests, primary_key: "hero_uuid", foreign_key: "hero_uuid", class_name: "Quest"
   has_many :perks, primary_key: "hero_uuid", foreign_key: "hero_uuid", class_name: "Perk"
   has_many :spells, primary_key: "hero_uuid", foreign_key: "hero_uuid", class_name: "Spell"
   has_many :inventory_slots, primary_key: "hero_uuid", foreign_key: "hero_uuid", class_name: "InventorySlot"
   has_many :equipment_slots, primary_key: "hero_uuid", foreign_key: "hero_uuid", class_name: "EquipmentSlot"
-  has_many :stash_slots, primary_key: "hero_uuid", foreign_key: "hero_uuid", class_name: "EquipmentSlot"
+  has_many :stash_slots, primary_key: "hero_uuid", foreign_key: "hero_uuid", class_name: "StashSlot"
   has_many :stats, primary_key: "hero_uuid", foreign_key: "hero_uuid", class_name: "Stat"
   has_many :ability_bar_configs, primary_key: "hero_uuid", foreign_key: "hero_uuid", class_name: "AbilityBarConfig"
   has_many :custom_tags, primary_key: "hero_uuid", foreign_key: "hero_uuid", class_name: "CustomTag"
