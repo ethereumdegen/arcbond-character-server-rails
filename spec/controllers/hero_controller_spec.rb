@@ -37,6 +37,7 @@ RSpec.describe HeroController do
       sample_quest_array = [{name: 'startedquest', progress: 1},{name: 'finishedquest', progress: 2}]
       sample_perk_array = [{name: 'sampleperk', level: 1, slot_id: 1 }]
       sample_spell_array = [{name: 'samplespell', learned: true, slot_id: 1 }]
+      sample_pattern_array = [{name: 'samplepattern', learned: true, slot_id: 1 }]
       sample_inventory_array = [{slot_id: 1, item_id: 1, item_name: 'test' , enchantment_name: 'wolf'}]
       sample_equipment_array = [{slot_id: 1, item_id: 1, item_name: 'swordy', enchantment_name: 'wolf' }]
       sample_stash_array = [{item_name: 'samplestash', slot_id: 1, item_id: 1 , enchantment_name: 'wolf'}]
@@ -50,6 +51,7 @@ RSpec.describe HeroController do
                                   quests: sample_quest_array,
                                   perks: sample_perk_array,
                                   spells: sample_spell_array,
+                                  patterns: sample_pattern_array,
                                   inventory_slots: sample_inventory_array,
                                   equipment_slots: sample_equipment_array,
                                   stash_slots: sample_stash_array,

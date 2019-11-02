@@ -37,6 +37,7 @@ class HeroController < ApplicationController
     quests = params[:quests]
     perks = params[:perks]
     spells = params[:spells]
+    patterns = params[:patterns]
     inventory_slots = params[:inventory_slots]
     equipment_slots = params[:equipment_slots]
     stash_slots = params[:stash_slots]
@@ -58,6 +59,12 @@ class HeroController < ApplicationController
       @hero.spells.destroy_all  #all children stay
       @hero.add_spells(spell_params)
     end
+
+    if(patterns !=  nil && patterns.length >= 1)
+      @hero.patterns.destroy_all  #all children stay
+      @hero.add_patterns(pattern_params)
+    end
+
 
     if(inventory_slots !=  nil && inventory_slots.length >= 1)
       @hero.inventory_slots.destroy_all  #all children stay
@@ -136,6 +143,16 @@ class HeroController < ApplicationController
 
   def spell_params
     params.require(:spells).map do |p|
+      p.permit(
+        :name,
+        :learned,
+        :slot_id
+      )
+    end
+  end
+
+  def pattern_params
+    params.require(:patterns).map do |p|
       p.permit(
         :name,
         :learned,

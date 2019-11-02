@@ -8,6 +8,7 @@ class Hero < ApplicationRecord
   has_many :quests, primary_key: "hero_uuid", foreign_key: "hero_uuid", class_name: "Quest"
   has_many :perks, primary_key: "hero_uuid", foreign_key: "hero_uuid", class_name: "Perk"
   has_many :spells, primary_key: "hero_uuid", foreign_key: "hero_uuid", class_name: "Spell"
+  has_many :patterns, primary_key: "hero_uuid", foreign_key: "hero_uuid", class_name: "Pattern"
   has_many :inventory_slots, primary_key: "hero_uuid", foreign_key: "hero_uuid", class_name: "InventorySlot"
   has_many :equipment_slots, primary_key: "hero_uuid", foreign_key: "hero_uuid", class_name: "EquipmentSlot"
   has_many :stash_slots, primary_key: "hero_uuid", foreign_key: "hero_uuid", class_name: "StashSlot"
@@ -56,6 +57,14 @@ class Hero < ApplicationRecord
   def add_spells(array)
     array.each do |item|
       self.spells.build( item )
+    end
+
+    self.save
+  end
+
+  def add_patterns(array)
+    array.each do |item|
+      self.patterns.build( item )
     end
 
     self.save
@@ -134,6 +143,11 @@ class Hero < ApplicationRecord
     result[:spells] = []
     self.spells.each do |item|
       result[:spells] << item.get_json
+    end
+
+    result[:patterns] = []
+    self.patterns.each do |item|
+      result[:patterns] << item.get_json
     end
 
     result[:inventory_slots] = []
