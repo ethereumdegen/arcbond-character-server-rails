@@ -43,7 +43,7 @@ class Hero < ApplicationRecord
       self.quests.build( item )
     end
 
-    self.save
+    #self.save
   end
 
   def add_perks(array)
@@ -51,7 +51,7 @@ class Hero < ApplicationRecord
       self.perks.build( item )
     end
 
-    self.save
+    #self.save
   end
 
   def add_spells(array)
@@ -59,7 +59,7 @@ class Hero < ApplicationRecord
       self.spells.build( item )
     end
 
-    self.save
+    #self.save
   end
 
   def add_patterns(array)
@@ -67,7 +67,7 @@ class Hero < ApplicationRecord
       self.patterns.build( item )
     end
 
-    self.save
+    #self.save
   end
 
   def add_inventory_slots(array)
@@ -75,7 +75,7 @@ class Hero < ApplicationRecord
       self.inventory_slots.build( item )
     end
 
-    self.save
+    #self.save
   end
 
   def add_equipment_slots(array)
@@ -83,7 +83,7 @@ class Hero < ApplicationRecord
       self.equipment_slots.build( item )
     end
 
-    self.save
+    #self.save
   end
 
   def add_stash_slots(array)
@@ -91,7 +91,7 @@ class Hero < ApplicationRecord
       self.stash_slots.build( item )
     end
 
-    self.save
+    #self.save
   end
 
   def add_ability_bar_configs(array)
@@ -99,7 +99,7 @@ class Hero < ApplicationRecord
       self.ability_bar_configs.build( item )
     end
 
-    self.save
+    #self.save
   end
 
   def add_custom_tags(array)
@@ -107,7 +107,7 @@ class Hero < ApplicationRecord
       self.custom_tags.build( item )
     end
 
-    self.save
+    #self.save
   end
 
 
@@ -120,7 +120,7 @@ class Hero < ApplicationRecord
       end
     end
 
-    self.save
+    #self.save
   end
 
   #used for loading
