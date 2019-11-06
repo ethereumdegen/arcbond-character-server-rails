@@ -3,13 +3,15 @@ class HeroController < ApplicationController
 
   require 'securerandom'
 
+  HERO_VERSION_NUMBER = 101
+
 
   def create_hero
 
     new_uuid = SecureRandom.uuid
 
     @hero = Hero.build_new_hero
-    @hero.version_number = 101  #this version number
+    @hero.version_number = HERO_VERSION_NUMBER  #this version number
     @hero.save!
 
      render json: {success:true, hero: @hero} #@hero.hero_uuid

@@ -45,12 +45,6 @@ ActiveRecord::Schema.define(version: 2019_11_06_144830) do
     t.index ["hero_uuid"], name: "index_equipment_slots_on_hero_uuid"
   end
 
-  create_table "factions", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "heros", force: :cascade do |t|
     t.string "hero_uuid"
     t.integer "version_number", default: 0, null: false
@@ -74,6 +68,16 @@ ActiveRecord::Schema.define(version: 2019_11_06_144830) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["hero_uuid"], name: "index_inventory_slots_on_hero_uuid"
+  end
+
+  create_table "patterns", force: :cascade do |t|
+    t.string "name", null: false
+    t.boolean "learned", null: false
+    t.string "hero_uuid", null: false
+    t.integer "slot_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hero_uuid"], name: "index_patterns_on_hero_uuid"
   end
 
   create_table "perks", force: :cascade do |t|
