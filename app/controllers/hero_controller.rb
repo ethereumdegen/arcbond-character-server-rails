@@ -54,10 +54,7 @@ class HeroController < ApplicationController
 
   end
 
-  def index
-     render json: 'hello world '
-  end
-
+ 
 
 
 end
