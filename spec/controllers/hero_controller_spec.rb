@@ -43,18 +43,19 @@ RSpec.describe HeroController do
       sample_ability_bar_config_array = [{slot_id: 2, ability_name: 'tempest' }]
       sample_custom_tag_array = [{name: 'beacon', value:'necro' }]
 
-      post :save_hero, :params => {hero_uuid: newhero.hero_uuid,
-                                  version_number: 111,
-                                  faction: 'elemental',
-                                  quests: sample_quest_array,
-                                  perks: sample_perk_array,
-                                  spells: sample_spell_array,
-                                  inventory_slots: sample_inventory_array,
-                                  stash_slots: sample_stash_array,
-                                  stats: sample_stat_array,
-                                  ability_bar_configs: sample_ability_bar_config_array  ,
-                                  custom_tags: sample_custom_tag_array
-                                }
+      post :save_hero, :params => {hero_data:
+                                    {hero_uuid: newhero.hero_uuid,
+                                    version_number: 111,
+                                    faction: 'elemental',
+                                    quests: sample_quest_array,
+                                    perks: sample_perk_array,
+                                    spells: sample_spell_array,
+                                    inventory_slots: sample_inventory_array,
+                                    stash_slots: sample_stash_array,
+                                    stats: sample_stat_array,
+                                    ability_bar_configs: sample_ability_bar_config_array  ,
+                                    custom_tags: sample_custom_tag_array}
+                                 }
 
 
 
